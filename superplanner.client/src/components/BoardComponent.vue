@@ -1,5 +1,6 @@
 <template>
   <div class="BoardComponenet">
+    <h1>Hello From Board Component, this will be a list of all boards</h1>
   </div>
 </template>
 

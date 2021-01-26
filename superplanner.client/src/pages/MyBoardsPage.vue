@@ -3,6 +3,7 @@
     <h1>
       Your boards:
     </h1>
+    <BoardComponenet />
   </div>
 </template>
 
