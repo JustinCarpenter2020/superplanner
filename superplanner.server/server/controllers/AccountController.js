@@ -10,6 +10,7 @@ export class AccountController extends BaseController {
       .get('', this.getUserAccount)
   }
 
+  // test commit
   async getUserAccount(req, res, next) {
     try {
       const account = await accountService.getAccount(req.userInfo)
