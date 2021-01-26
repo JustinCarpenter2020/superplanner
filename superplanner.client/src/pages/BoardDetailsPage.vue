@@ -1,5 +1,6 @@
 <template>
   <div class="BoardDetailsPage">
+    <h1>helloooo </h1>
   </div>
 </template>
 

@@ -1,11 +1,13 @@
 <template>
   <div class="BoardComponenet col-4">
     <div class="card mt-5">
-      <div class="card-body">
-        <h4 class="card-title">
-          {{ boardProp.title }}
-        </h4>
-      </div>
+      <router-link class="text-dark" :to="{name: 'BoardDetails', params: {id: boardProp.id}}">
+        <div class="card-body">
+          <h4 class="card-title">
+            {{ boardProp.title }}
+          </h4>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -28,6 +30,7 @@ export default {
    border-radius: 4px;
   box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
     transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    cursor: pointer;
 }
 .card:hover{
   border-color: #2069e0;
