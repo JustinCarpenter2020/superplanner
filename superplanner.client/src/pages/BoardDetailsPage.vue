@@ -1,6 +1,31 @@
 <template>
-  <div class="BoardDetailsPage">
-    <h1>{{ state.board.title }} : </h1>
+  <div class="BoardDetailsPage container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="dropdown text-right mt-1">
+          <button class="btn btn-dark dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+          >
+            <i class="fas fa-cog"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-item text-danger" href="#">
+              Delete Board
+            </div>
+            <div class="dropdown-item" href="#">
+              Edit Board Title
+            </div>
+          </div>
+        </div>
+        <h1 class="text-center">
+          <b>{{ state.board.title }} </b>:
+        </h1>
+      </div>
+    </div>
   </div>
 </template>
 
