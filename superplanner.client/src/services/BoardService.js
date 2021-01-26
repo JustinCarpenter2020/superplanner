@@ -13,5 +13,11 @@ class BoardService {
     AppState.activeBoard = res.data
     logger.log(AppState.activeBoard)
   }
+
+  async createBoard(board) {
+    const res = await api.post('api/boards/', board)
+    AppState.boards.push(res.data)
+    return res.data.id
+  }
 }
 export const boardService = new BoardService()
