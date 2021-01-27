@@ -13,9 +13,14 @@
             <i class="fas fa-cog"></i>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <div class="dropdown-item text-danger" href="#">
-              Delete Board
-            </div>
+            <router-link :to="{
+              name: 'MyBoards'
+            }"
+            >
+              <div @click="deleteBoard" class="dropdown-item text-danger" href="#">
+                Delete Board
+              </div>
+            </router-link>
             <div class="dropdown-item" href="#">
               Edit Board Title
             </div>
@@ -51,7 +56,14 @@ export default {
       }
     })
     return {
-      state
+      state,
+      async deleteBoard() {
+        try {
+          await boardService.deleteBoard(state.board.id)
+        } catch (error) {
+          logger.error(error)
+        }
+      }
     }
   },
   components: {}
