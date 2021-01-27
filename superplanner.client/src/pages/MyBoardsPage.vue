@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="row">
-      <BoardComponenet v-for="board in state.boards" :key="board.id" :board-prop="board" />
+      <BoardComponent v-for="board in state.boards" :key="board.id" :board-prop="board" />
     </div>
   </div>
 </template>

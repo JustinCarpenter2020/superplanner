@@ -31,6 +31,9 @@
         </h1>
       </div>
     </div>
+    <div class="row">
+      <ListComponent />
+    </div>
   </div>
 </template>
 

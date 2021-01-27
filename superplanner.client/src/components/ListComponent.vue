@@ -1,6 +1,8 @@
 <template>
   <div class="ListComponent">
-    <h1>Hello this is one list</h1>
+    <div class="col">
+      <h1>Hello this is one list</h1>
+    </div>
   </div>
 </template>
 

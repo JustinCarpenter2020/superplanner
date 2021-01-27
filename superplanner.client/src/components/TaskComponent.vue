@@ -1,12 +1,12 @@
 <template>
-  <div class="TaskComponenet">
+  <div class="TaskComponent">
     <h1>Hello this is one Task</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TaskComponenet',
+  name: 'TaskComponent',
   setup() {
     return {}
   },

@@ -1,5 +1,5 @@
 <template>
-  <div class="BoardComponenet col-4">
+  <div class="BoardComponent col-4">
     <router-link class="text-dark link" :to="{name: 'BoardDetails', params: {id: boardProp.id}}">
       <div class="card mt-5">
         <div class="card-body">
@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'BoardComponenet',
+  name: 'BoardComponent',
   props: { boardProp: { type: Object, required: true } },
   setup(props) {
     return {}
