@@ -14,29 +14,41 @@
               >
                 <i class="fas fa-align-justify"></i>
               </button>
-              <div class="dropdown-menu text-danger" aria-labelledby="dropdownMenuButton">
-                <div @click="deleteList" class="dropdown-item" href="#">Delete List</div>
+              <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                <div @click="deleteList" class="dropdown-item text-danger" href="#">Delete List</div>
               </div>
             </div></span>
             {{ listProp.title }}
           </h4>
         </div>
+        <TaskComponent v-for="task in state.tasks" :key="task.id" :task-prop="task" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { reactive, computed } from 'vue'
+import { reactive, computed, onMounted } from 'vue'
 import { listService } from '../services/ListService'
 import { AppState } from '../AppState'
+import { taskService } from '../services/TaskService'
+import { logger } from '../utils/Logger'
 export default {
   name: 'ListComponent',
   props: { listProp: { type: Object, required: true } },
   setup(props) {
     const state = reactive({
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      // REVIEW APPSTATE.TASKS
+      tasks: computed(() => AppState.tasks[props.listProp.id])
       // editComment: { id: props.commentProp.id }
+    })
+    onMounted(async() => {
+      try {
+        await taskService.getTasks(props.listProp.id)
+      } catch (error) {
+        logger.error(error)
+      }
     })
     return {
       state,
@@ -56,5 +68,9 @@ export default {
 
 .dropdown-toggle::after {
     content: none;
+}
+
+.dropdown-menu{
+  cursor: pointer;
 }
 </style>

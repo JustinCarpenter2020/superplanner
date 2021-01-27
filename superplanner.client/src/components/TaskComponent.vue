@@ -1,13 +1,14 @@
 <template>
   <div class="TaskComponent">
-    <h1>Hello this is one Task</h1>
+    <p>{{ taskProp.body }}</p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'TaskComponent',
-  setup() {
+  props: { taskProp: { type: Object, required: true } },
+  setup(props) {
     return {}
   },
   components: {}
