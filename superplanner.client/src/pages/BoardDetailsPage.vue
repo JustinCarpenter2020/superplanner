@@ -111,6 +111,7 @@ export default {
       async createList() {
         try {
           await listService.createList(state.newList)
+          state.newList = { boardId: route.params.id }
         } catch (error) {
           logger.error(error)
         }
