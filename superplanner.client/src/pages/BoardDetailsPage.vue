@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="row">
-      <ListComponent />
+      <ListComponent v-for="list in state.lists" :key="list.id" :list-prop="list" />
     </div>
   </div>
 </template>
@@ -43,17 +43,20 @@ import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import { boardService } from '../services/BoardService'
+import { listService } from '../services/ListService'
 export default {
   name: 'BoardDetailsPage',
   setup() {
     const route = useRoute()
     const state = reactive({
       user: computed(() => AppState.user),
-      board: computed(() => AppState.activeBoard)
+      board: computed(() => AppState.activeBoard),
+      lists: computed(() => AppState.lists)
     })
     onMounted(async() => {
       try {
         await boardService.getOne(route.params.id)
+        await listService.getLists(AppState.activeBoard.id)
       } catch (error) {
         logger.error(error)
       }
