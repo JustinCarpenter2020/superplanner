@@ -7,5 +7,11 @@ class ListService {
     AppState.lists = res.data
     logger.log(AppState.lists)
   }
+
+  async createList(list) {
+    const res = await api.post('api/lists/', list)
+    AppState.lists.push(res.data)
+    return res.send
+  }
 }
 export const listService = new ListService()
