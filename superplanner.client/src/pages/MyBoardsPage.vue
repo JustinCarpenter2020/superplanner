@@ -57,6 +57,7 @@ export default {
       async createBoard() {
         try {
           await boardService.createBoard(state.newBoard)
+          state.newBoard = {}
         } catch (error) {
           logger.error(error)
         }
