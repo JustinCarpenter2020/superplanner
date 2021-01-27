@@ -22,6 +22,21 @@
           </h4>
         </div>
         <TaskComponent v-for="task in state.tasks" :key="task.id" :task-prop="task" />
+        <form type="submit" @submit.prevent="createTask">
+          <div class="form-group">
+            <input type="text"
+                   class="form-control"
+                   name=""
+                   id=""
+                   v-model="state.newTask.body"
+                   aria-describedby="helpId"
+                   placeholder="Create New Task"
+            >
+            <button type="submit" class="btn btn-success">
+              Create
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -40,8 +55,9 @@ export default {
     const state = reactive({
       account: computed(() => AppState.account),
       // REVIEW APPSTATE.TASKS
-      tasks: computed(() => AppState.tasks[props.listProp.id])
+      tasks: computed(() => AppState.tasks[props.listProp.id]),
       // editComment: { id: props.commentProp.id }
+      newTask: { listId: props.listProp.id }
     })
     onMounted(async() => {
       try {
@@ -54,6 +70,14 @@ export default {
       state,
       deleteList() {
         listService.deleteList(props.listProp.id)
+      },
+      async createTask() {
+        try {
+          await taskService.createTask(state.newTask)
+          state.newTask = { listId: state.props.listProp.id }
+        } catch (error) {
+          logger.error(error)
+        }
       }
     }
   },
