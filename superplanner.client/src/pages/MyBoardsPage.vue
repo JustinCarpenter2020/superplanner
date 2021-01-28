@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
         <h1>
-          Your boards:
+          Your Boards
         </h1>
       </div>
       <div class="col-4">

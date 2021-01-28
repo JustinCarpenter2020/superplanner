@@ -1,6 +1,6 @@
 <template>
   <div class="CommentComponent">
-    <h1>Hello this will be one comment</h1>
+    <p>Hello this will be one comment</p>
   </div>
 </template>
 

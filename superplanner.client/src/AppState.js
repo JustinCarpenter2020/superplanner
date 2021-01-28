@@ -9,5 +9,5 @@ export const AppState = reactive({
   lists: [],
   // review dict
   tasks: {},
-  comments: []
+  comments: {}
 })
