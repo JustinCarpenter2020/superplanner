@@ -20,5 +20,13 @@ class TaskService {
     await api.delete('api/tasks/' + taskId)
     this.getTasks(listId)
   }
+
+  async editTask(newTask, listId) {
+    const old = newTask.listId
+    newTask.listId = listId
+    await api.put('api/tasks/' + newTask.id, newTask)
+    this.getTasks(old)
+    this.getTasks(newTask.listId)
+  }
 }
 export const taskService = new TaskService()

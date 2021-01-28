@@ -62,7 +62,7 @@ export default {
       lists: computed(() => AppState.lists),
       comments: computed(() => AppState.comments[props.taskProp.id]),
       newComment: { taskId: props.taskProp.id },
-      editTask: { }
+      editTask: { body: props.taskProp.body, listId: props.taskProp.listId, id: props.taskProp.id }
     })
     onMounted(async() => {
       try {
@@ -78,15 +78,15 @@ export default {
       },
       async createComment() {
         try {
-          await commentService.createComment(state.newComment)
+          await commentService.createComment(state.newComment, state.editTask)
         } catch (error) {
           logger.error(error)
         }
       },
-      async editTask() {
+      async editTask(listId) {
         try {
-          logger.log(state.editTask)
-          await taskService.editTask()
+          logger.log(listId)
+          await taskService.editTask(state.editTask, listId)
         } catch (error) {
           logger.error(error)
         }
