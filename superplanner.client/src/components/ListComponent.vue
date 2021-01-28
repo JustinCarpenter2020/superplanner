@@ -68,8 +68,12 @@ export default {
     })
     return {
       state,
-      deleteList() {
-        listService.deleteList(props.listProp.id)
+      async deleteList() {
+        try {
+          listService.deleteList(props.listProp.id)
+        } catch (error) {
+          logger.error(error)
+        }
       },
       async createTask() {
         try {

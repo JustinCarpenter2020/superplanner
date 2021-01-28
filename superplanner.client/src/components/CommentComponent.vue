@@ -16,8 +16,11 @@ export default {
   setup(props) {
     return {
       async deleteComment() {
-        logger.log(props.commentProp)
-        await commentService.deleteComment(props.commentProp.id, props.commentProp.taskId)
+        try {
+          await commentService.deleteComment(props.commentProp.id, props.commentProp.taskId)
+        } catch (error) {
+          logger.error(error)
+        }
       }
     }
   },
