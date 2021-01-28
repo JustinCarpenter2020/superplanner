@@ -15,5 +15,10 @@ class CommentService {
     this.getComments(comment.taskId)
     return res.data
   }
+
+  async deleteComment(commentId, taskId) {
+    await api.delete('api/comments/' + commentId)
+    this.getComments(taskId)
+  }
 }
 export const commentService = new CommentService()

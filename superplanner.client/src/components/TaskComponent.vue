@@ -50,8 +50,12 @@ export default {
       deleteTask() {
         taskService.deleteTask(props.taskProp.id, props.taskProp.listId)
       },
-      createComment() {
-        commentService.createComment(state.newComment)
+      async createComment() {
+        try {
+          await commentService.createComment(state.newComment)
+        } catch (error) {
+          logger.error(error)
+        }
       }
     }
   },
