@@ -21,12 +21,13 @@ class TaskService {
     this.getTasks(listId)
   }
 
-  async editTask(newTask, listId) {
-    const old = newTask.listId
-    newTask.listId = listId
-    await api.put('api/tasks/' + newTask.id, newTask)
+  // REVIEW pulling in state.newTask from the Task component
+  async editTask(task, listId) {
+    const old = task.listId
+    task.listId = listId
+    await api.put('api/tasks/' + task.id, task)
     this.getTasks(old)
-    this.getTasks(newTask.listId)
+    this.getTasks(task.listId)
   }
 }
 export const taskService = new TaskService()
