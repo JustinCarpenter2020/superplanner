@@ -1,6 +1,30 @@
 <template>
   <div class="TaskComponent">
-    <p>{{ taskProp.body }} <span class="text-right"><i @click="deleteTask" class="far fa-times-circle text-danger"></i></span></p>
+    <p>
+      {{ taskProp.body }}
+      <span class="text-right"><i @click="deleteTask" class="far fa-times-circle text-danger"></i></span>
+      <span>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+          >
+            Move
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <button class="dropdown-item"
+                    :id="list.id"
+                    v-for="list in state.lists "
+                    :key="list.id"
+                    @click="editTask(list.id)"
+                    href="#"
+            > {{ list.title }}</button>
+            <div>
+            </div></div></div></span>
+    </p>
   </div>
   <div>
     <CommentComponent v-for="comment in state.comments" :key="comment.id" :comment-prop="comment" />
@@ -35,8 +59,10 @@ export default {
     // REVIEW this is the start
     const state = reactive({
       account: computed(() => AppState.account),
+      lists: computed(() => AppState.lists),
       comments: computed(() => AppState.comments[props.taskProp.id]),
-      newComment: { taskId: props.taskProp.id }
+      newComment: { taskId: props.taskProp.id },
+      editTask: { }
     })
     onMounted(async() => {
       try {
@@ -56,6 +82,14 @@ export default {
         } catch (error) {
           logger.error(error)
         }
+      },
+      async editTask() {
+        try {
+          logger.log(state.editTask)
+          await taskService.editTask()
+        } catch (error) {
+          logger.error(error)
+        }
       }
     }
   },
@@ -64,5 +98,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.dropdown-item{
+  cursor: pointer;
+}
 </style>
