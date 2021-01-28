@@ -2,7 +2,7 @@
   <div class="about container-fluid">
     <div class="row">
       <div class="col">
-        <h1>
+        <h1 class="text-white">
           Your Boards
         </h1>
       </div>
@@ -67,3 +67,12 @@ export default {
 }
 
 </script>
+
+<style scoped>
+ .about{
+    background-repeat: none;
+     background-size:cover;
+     background-image: linear-gradient(rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1508379748716-9d2d1c63db1b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1351&q=80');
+ }
+</style>

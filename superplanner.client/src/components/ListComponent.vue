@@ -1,11 +1,11 @@
 <template>
   <div class="col-4">
-    <div class="ListComponent">
-      <div class="card mt-3">
+    <div class="ListComponent ">
+      <div class="card mt-3 align-self-stretch">
         <div class="card-body">
           <h4 class="card-title">
             <span class="text-right"><div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle"
+              <button class="btn btn-outline grey dropdown-toggle"
                       type="button"
                       id="dropdownMenuButton"
                       data-toggle="dropdown"
@@ -88,6 +88,9 @@ export default {
 <style lang="scss" scoped>
 .card{
   height: 100%;
+  background: #f5f5f5;
+  display: flex;
+   justify-content: space-between;
 }
 
 .dropdown-toggle::after {
@@ -96,5 +99,9 @@ export default {
 
 .dropdown-menu{
   cursor: pointer;
+}
+
+.grey{
+  background-color: #707070;
 }
 </style>
