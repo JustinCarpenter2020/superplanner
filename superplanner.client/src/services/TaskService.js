@@ -13,7 +13,7 @@ class TaskService {
     const res = await api.post('api/tasks/', task)
     AppState.tasks[task.listId] = res.data
     this.getTasks(task.listId)
-    return res.send
+    return res.data
   }
 
   async deleteTask(taskId, listId) {

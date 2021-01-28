@@ -5,6 +5,21 @@
   <div>
     <CommentComponent v-for="comment in state.comments" :key="comment.id" :comment-prop="comment" />
   </div>
+  <div class="form-group">
+    <form type="submit" @submit.prevent="createComment">
+      <input type="text"
+             class="form-control"
+             name=""
+             id=""
+             v-model="state.newComment.body"
+             aria-describedby="helpId"
+             placeholder="new comment"
+      >
+      <button type="submit" class="btn btn-primary">
+        create
+      </button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -20,7 +35,8 @@ export default {
     // REVIEW this is the start
     const state = reactive({
       account: computed(() => AppState.account),
-      comments: computed(() => AppState.comments[props.taskProp.id])
+      comments: computed(() => AppState.comments[props.taskProp.id]),
+      newComment: { taskId: props.taskProp.id }
     })
     onMounted(async() => {
       try {
@@ -33,6 +49,9 @@ export default {
       state,
       deleteTask() {
         taskService.deleteTask(props.taskProp.id, props.taskProp.listId)
+      },
+      createComment() {
+        commentService.createComment(state.newComment)
       }
     }
   },

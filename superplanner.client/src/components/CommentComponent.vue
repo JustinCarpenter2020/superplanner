@@ -1,12 +1,13 @@
 <template>
   <div class="CommentComponent">
-    <p>Hello this will be one comment</p>
+    <p>{{ commentProp.body }}</p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'CommentComponent',
+  props: { commentProp: { type: Object, required: true } },
   setup() {
     return {}
   },
