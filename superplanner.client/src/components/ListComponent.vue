@@ -1,6 +1,6 @@
 <template>
   <div class="col-4">
-    <div class="ListComponent ">
+    <div class="ListComponent">
       <div class="card mt-3 align-self-stretch">
         <div class="card-body">
           <h4 class="card-title">
