@@ -8,6 +8,7 @@ import CommentSchema from '../models/Comment'
 
 class DbContext {
   Values = mongoose.model('Value', ValueSchema);
+  // account is the only singular!
   Account = mongoose.model('Account', AccountSchema);
 
   Boards = mongoose.model('Board', BoardSchema);

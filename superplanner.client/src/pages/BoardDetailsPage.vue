@@ -70,8 +70,8 @@
             </div>
           </div>
         </div>
-        <h1 class="text-center text-white">
-          <b>{{ state.board.title }} </b>:
+        <h1 class="text-center text-white title">
+          {{ state.board.title }} :
         </h1>
       </div>
     </div>
@@ -130,6 +130,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.title{
+   text-shadow: 3px 3px 4px #000000;
+}
 
  .BoardDetailsPage{
     background-repeat: none;

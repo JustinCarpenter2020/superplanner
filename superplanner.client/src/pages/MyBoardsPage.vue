@@ -2,8 +2,8 @@
   <div class="about container-fluid">
     <div class="row">
       <div class="col">
-        <h1 class="text-white">
-          Your Boards
+        <h1 class="text-white title mt-3">
+          Personal Boards
         </h1>
       </div>
       <div class="col-4">
@@ -69,6 +69,9 @@ export default {
 </script>
 
 <style scoped>
+.title{
+  text-shadow: 4px 3px 4px #000000;
+}
  .about{
     background-repeat: none;
      background-size:cover;
