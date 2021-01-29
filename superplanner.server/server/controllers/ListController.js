@@ -54,6 +54,7 @@ export class ListController extends BaseController {
 
   async deleteList(req, res, next) {
     try {
+      // check identity if statement user id === author id
       res.send(await listService.delete(req.params.id))
     } catch (error) {
       next(error)
