@@ -2,6 +2,7 @@ import { listService } from '../services/ListService'
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { taskService } from '../services/TaskService'
+import { BadRequest } from '../utils/Errors'
 export class ListController extends BaseController {
   constructor() {
     super('api/lists')
@@ -55,7 +56,11 @@ export class ListController extends BaseController {
   async deleteList(req, res, next) {
     try {
       // check identity if statement user id === author id
-      res.send(await listService.delete(req.params.id))
+      if (req.userInfo.id === req.params) {
+        res.send(await listService.delete(req.params.id))
+      } else {
+        throw new BadRequest('You are not the author')
+      }
     } catch (error) {
       next(error)
     }

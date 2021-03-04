@@ -1,48 +1,50 @@
 <template>
   <div class="TaskComponent">
-    <p>
-      {{ taskProp.body }}
-      <span class="text-right"><i @click="deleteTask" class="far fa-times-circle text-danger"></i></span>
-      <span>
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-          >
-            Move
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <button class="dropdown-item"
-                    :id="list.id"
-                    v-for="list in state.lists "
-                    :key="list.id"
-                    @click="editTask(list.id)"
-                    href="#"
-            > {{ list.title }}</button>
-            <div>
-            </div></div></div></span>
-    </p>
-  </div>
-  <div>
-    <CommentComponent v-for="comment in state.comments" :key="comment.id" :comment-prop="comment" />
-  </div>
-  <div class="form-group">
-    <form type="submit" @submit.prevent="createComment">
-      <input type="text"
-             class="form-control"
-             name=""
-             id=""
-             v-model="state.newComment.body"
-             aria-describedby="helpId"
-             placeholder="new comment"
-      >
-      <button type="submit" class="btn btn-primary">
-        create
-      </button>
-    </form>
+    <div>
+      <p>
+        {{ taskProp.body }}
+        <span class="text-right"><i @click="deleteTask" class="far fa-times-circle text-danger"></i></span>
+        <span>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+            >
+              Move
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <button class="dropdown-item"
+                      :id="list.id"
+                      v-for="list in state.lists "
+                      :key="list.id"
+                      @click="editTask(list.id)"
+                      href="#"
+              > {{ list.title }}</button>
+              <div>
+              </div></div></div></span>
+      </p>
+    </div>
+    <div>
+      <CommentComponent v-for="comment in state.comments" :key="comment.id" :comment-prop="comment" />
+    </div>
+    <div class="form-group">
+      <form type="submit" @submit.prevent="createComment">
+        <input type="text"
+               class="form-control"
+               name=""
+               id=""
+               v-model="state.newComment.body"
+               aria-describedby="helpId"
+               placeholder="new comment"
+        >
+        <button type="submit" class="btn btn-primary">
+          create
+        </button>
+      </form>
+    </div>
   </div>
 </template>
 
